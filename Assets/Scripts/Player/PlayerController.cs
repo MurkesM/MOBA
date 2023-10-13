@@ -5,13 +5,16 @@ namespace MOBA
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private Camera playerCamera;
-        [SerializeField] float moveSpeed = 1;
+        [SerializeField] private float moveSpeed = 1;
         [SerializeField] private LayerMask floorLayer;
 
         private int mouseRightClickIndex = 1;
         private Vector3 movePosition = new();
 
-        private void Awake()
+        private Ray ray;
+        private RaycastHit hit;
+
+        private void OnEnable()
         {
             movePosition = transform.position;
         }
@@ -19,21 +22,20 @@ namespace MOBA
         private void Update()
         {
             if (Input.GetMouseButtonDown(mouseRightClickIndex))
-                UpdateMovePosition();
+                UpdatePlayerMovePosition();
 
-            Move();
+            MovePlayer();
         }
 
-        private void UpdateMovePosition()
+        private void UpdatePlayerMovePosition()
         {
-            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            ray = playerCamera.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, floorLayer))
                 movePosition = new Vector3(hit.point.x,transform.position.y, hit.point.z);
         }
 
-        private void Move()
+        private void MovePlayer()
         {
             transform.position = Vector3.MoveTowards(transform.position, movePosition, moveSpeed * Time.deltaTime);
         }
