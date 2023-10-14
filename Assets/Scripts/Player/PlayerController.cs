@@ -9,6 +9,8 @@ namespace MOBA
         [SerializeField] private float rotateSpeed = 1;
         [SerializeField] private float cameraMoveSpeed = 1;
         [SerializeField] private LayerMask floorLayer;
+        [SerializeField] private float cameraCenterXOffset = 0;
+        [SerializeField] private float cameraCenterYOffset = 0;
 
         private int mouseRightClickIndex = 1;
         private Vector3 movePosition = new();
@@ -20,6 +22,11 @@ namespace MOBA
         private Vector3 mousePosition = new();
         private float deltaTime;
 
+        private Vector3 verticalPoint = new();
+        private Vector3 horizontalPoint = new();
+
+        private bool cameraLockedOnPlayer = false;
+
         private void OnEnable()
         {
             movePosition = transform.position;
@@ -29,6 +36,11 @@ namespace MOBA
         {
             if (Input.GetMouseButtonDown(mouseRightClickIndex))
                 UpdatePlayerMovePosition();
+
+            if (Input.GetKey(KeyCode.Space))
+                LockCameraOnPlayer();
+            else
+                cameraLockedOnPlayer = false;
 
             mousePosition = Input.mousePosition;
             deltaTime = Time.deltaTime;
@@ -62,6 +74,9 @@ namespace MOBA
         /// </summary>
         private void MoveCamera()
         {
+            if (cameraLockedOnPlayer)
+                return;
+
             if (mousePosition.x <= 0)
                 playerCamera.transform.position -= Vector3.right * deltaTime * cameraMoveSpeed;
 
@@ -73,6 +88,19 @@ namespace MOBA
 
             else if (mousePosition.y >= Screen.height)
                 playerCamera.transform.position += Vector3.forward * deltaTime * cameraMoveSpeed;
+        }
+
+        private void LockCameraOnPlayer()
+        {
+            cameraLockedOnPlayer = true;
+
+            verticalPoint = Utilities.FindNearestPointOnLine(transform.position, Vector3.forward, playerCamera.transform.position);
+            horizontalPoint = Utilities.FindNearestPointOnLine(transform.position, Vector3.right, playerCamera.transform.position);
+
+            playerCamera.transform.position = new Vector3(
+                verticalPoint.x + cameraCenterXOffset, 
+                playerCamera.transform.position.y, 
+                horizontalPoint.z + cameraCenterYOffset);
         }
     }
 }
