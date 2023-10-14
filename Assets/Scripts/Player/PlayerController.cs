@@ -6,10 +6,12 @@ namespace MOBA
     {
         [SerializeField] private Camera playerCamera;
         [SerializeField] private float moveSpeed = 1;
+        [SerializeField] private float rotateSpeed = 1;
         [SerializeField] private LayerMask floorLayer;
 
         private int mouseRightClickIndex = 1;
         private Vector3 movePosition = new();
+        private Quaternion rotation = Quaternion.identity;
 
         private Ray ray;
         private RaycastHit hit;
@@ -25,6 +27,9 @@ namespace MOBA
                 UpdatePlayerMovePosition();
 
             MovePlayer();
+
+            Debug.DrawLine(movePosition, movePosition + Vector3.up, Color.red);
+            Debug.DrawLine(transform.position + transform.forward, movePosition, Color.green);
         }
 
         private void UpdatePlayerMovePosition()
@@ -38,6 +43,13 @@ namespace MOBA
         private void MovePlayer()
         {
             transform.position = Vector3.MoveTowards(transform.position, movePosition, moveSpeed * Time.deltaTime);
+
+            //rotate if the player hasn't reached the move position yet
+            if (transform.position != movePosition)
+            {
+                rotation = Quaternion.LookRotation(movePosition - transform.position);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotateSpeed);
+            }
         }
     }
 }

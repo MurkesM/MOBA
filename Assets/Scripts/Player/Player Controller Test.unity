@@ -453,7 +453,6 @@ MonoBehaviour:
   floorLayer:
     serializedVersion: 2
     m_Bits: 64
-  playerModelObject: {fileID: 1442472207}
 --- !u!1 &1442472207
 GameObject:
   m_ObjectHideFlags: 0
