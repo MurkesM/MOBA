@@ -449,7 +449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 218835957}
   moveSpeed: 10
-  rotateSpeed: 10
+  rotateSpeed: 20
   floorLayer:
     serializedVersion: 2
     m_Bits: 64

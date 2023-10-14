@@ -27,9 +27,6 @@ namespace MOBA
                 UpdatePlayerMovePosition();
 
             MovePlayer();
-
-            Debug.DrawLine(movePosition, movePosition + Vector3.up, Color.red);
-            Debug.DrawLine(transform.position + transform.forward, movePosition, Color.green);
         }
 
         private void UpdatePlayerMovePosition()
