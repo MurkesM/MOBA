@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 5279571670945587122}
   - component: {fileID: 5279571670945587123}
   - component: {fileID: 5279571670945587121}
-  - component: {fileID: 5279571670945587120}
+  - component: {fileID: 7049855878418507703}
   - component: {fileID: 5279571670945587086}
   - component: {fileID: 5279571670945587084}
   m_Layer: 0
@@ -278,7 +278,7 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!114 &5279571670945587120
+--- !u!114 &7049855878418507703
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -287,12 +287,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5279571670945587125}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
+  m_Script: {fileID: 11500000, guid: ca47e260de86b1f468987b27f18fad81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
   radius: 0.5
-  height: 1.8
+  height: 2.5
   canMove: 1
   maxSpeed: 5
   gravity: {x: 0, y: 0, z: 0}
