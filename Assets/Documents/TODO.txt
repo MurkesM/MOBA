@@ -1,5 +1,5 @@
 General TODO:
-Get 1 character setup with a model and animations for movement.
+
 
 PathFinding TODO:
 
