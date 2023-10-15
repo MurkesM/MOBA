@@ -3,5 +3,3 @@ PathFinding TODO:
 -When bulding to UWP: ""Unity for some reason refuses to include the metadata for some .dll files in the package with the UnityPackage file. 
 To get it working on UWP you need to locate the Pathfinding.Ionic.Zip.dll file in your Unity project and 
 make sure it is marked as being *excluded* when building for UWP. This should be the only thing you need to do to get it to work"
-
--need to improve on making the users path being more direct. Sometimes when clicking the line should just be a straight line but isnt.
