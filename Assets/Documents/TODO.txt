@@ -1,14 +1,7 @@
-A* Path Finding Package
-Package Link: https://arongranberg.com/astar/front
+PathFinding TODO:
 
-TODO:
-Still need to do: Unity for some reason refuses to include the metadata for some .dll files in the package with the UnityPackage file. 
+-When bulding to UWP: ""Unity for some reason refuses to include the metadata for some .dll files in the package with the UnityPackage file. 
 To get it working on UWP you need to locate the Pathfinding.Ionic.Zip.dll file in your Unity project and 
-make sure it is marked as being *excluded* when building for UWP. This should be the only thing you need to do to get it to work
+make sure it is marked as being *excluded* when building for UWP. This should be the only thing you need to do to get it to work"
 
-PathFinding:
-need to figure out why when setting a new point the start of  the line is from a previoud position of the player
-need to improve on making the users path being more direct. Sometimes when clicking the line should just be a straight line but isnt.
-need to figure out why when move the targets position it takes so long for the player to change its move direction.
-^ the AIPath script is the issue here. It does movement and rotation with dampening values by default. Also to make the path update quicker
-you need to mess with the recalculation functions on AIPath, under the Pathfinding section;
+-need to improve on making the users path being more direct. Sometimes when clicking the line should just be a straight line but isnt.
