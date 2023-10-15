@@ -13,7 +13,7 @@ namespace MOBA
         private RaycastHit hit;
 
         [Tooltip("Represents the target transform the ai pathfinding is using.")]
-        public Transform moveTarget;
+        public Transform pathfindingTarget;
 
         private void Update()
         {
@@ -26,7 +26,7 @@ namespace MOBA
             ray = playerCamera.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, floorLayer))
-                moveTarget.position = hit.point;
+                pathfindingTarget.position = hit.point;
         }
     }
 }
