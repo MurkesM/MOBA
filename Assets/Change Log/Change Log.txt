@@ -1,2 +1,0 @@
-A* Path Finding Package
-https://arongranberg.com/astar/front
