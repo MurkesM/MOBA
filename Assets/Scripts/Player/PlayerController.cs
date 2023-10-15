@@ -13,8 +13,8 @@ namespace MOBA
         [SerializeField] private float cameraCenterYOffset = 0;
 
         private int mouseRightClickIndex = 1;
-        private Vector3 movePosition = new();
-        private Quaternion rotation = new();
+        //private Vector3 movePosition = new();
+        //private Quaternion rotation = new();
 
         private Ray ray;
         private RaycastHit hit;
@@ -29,10 +29,12 @@ namespace MOBA
 
         public bool cameraControlsActive = true;
 
-        private void OnEnable()
-        {
-            movePosition = transform.position;
-        }
+        //private void OnEnable()
+        //{
+        //    movePosition = transform.position;
+        //}
+
+        public Transform moveTarget;
 
         private void Update()
         {
@@ -47,7 +49,7 @@ namespace MOBA
             mousePosition = Input.mousePosition;
             deltaTime = Time.deltaTime;
 
-            MovePlayer();
+            //MovePlayer();
             MoveCamera();
         }
 
@@ -56,20 +58,20 @@ namespace MOBA
             ray = playerCamera.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, floorLayer))
-                movePosition = new Vector3(hit.point.x,transform.position.y, hit.point.z);
+                moveTarget.position = hit.point;
         }
 
-        private void MovePlayer()
-        {
-            transform.position = Vector3.MoveTowards(transform.position, movePosition, playerMovedSpeed * deltaTime);
+        //private void MovePlayer()
+        //{
+            //transform.position = Vector3.MoveTowards(transform.position, movePosition, playerMovedSpeed * deltaTime);
 
-            //rotate if the player hasn't reached the move position yet
-            if (transform.position != movePosition)
-            {
-                rotation = Quaternion.LookRotation(movePosition - transform.position);
-                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotateSpeed * deltaTime);
-            }
-        }
+            ////rotate if the player hasn't reached the move position yet
+            //if (transform.position != movePosition)
+            //{
+            //    rotation = Quaternion.LookRotation(movePosition - transform.position);
+            //    transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotateSpeed * deltaTime);
+            //}
+        //}
 
         /// <summary>
         /// Move camera whenever the users mouse is at the edge of the screens.
