@@ -27,6 +27,8 @@ namespace MOBA
 
         private bool cameraLockedOnPlayer = false;
 
+        public bool cameraControlsActive = true;
+
         private void OnEnable()
         {
             movePosition = transform.position;
@@ -74,7 +76,7 @@ namespace MOBA
         /// </summary>
         private void MoveCamera()
         {
-            if (cameraLockedOnPlayer)
+            if (cameraLockedOnPlayer || !cameraControlsActive)
                 return;
 
             if (mousePosition.x <= 0)
@@ -92,6 +94,9 @@ namespace MOBA
 
         private void LockCameraOnPlayer()
         {
+            if (!cameraControlsActive)
+                return;
+
             cameraLockedOnPlayer = true;
 
             verticalPoint = Utilities.FindNearestPointOnLine(transform.position, Vector3.forward, playerCamera.transform.position);
