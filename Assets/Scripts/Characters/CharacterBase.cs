@@ -11,6 +11,8 @@ namespace MOBA
 
         [SerializeField] protected AIPathExtended aiPathExtended;
 
+        [SerializeField] protected Animator animator;
+
         protected virtual void OnEnable()
         {
             aiPathExtended.OnTargetReachedEvent += StopMoving;
