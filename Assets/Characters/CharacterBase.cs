@@ -70,11 +70,15 @@ namespace MOBA
         protected virtual void StartMoving()
         {
             print("Start Moving");
+
+            animator.SetBool("Walk", true);
         }
 
         protected virtual void StopMoving()
         {
             print("Stop Moving");
+
+            animator.SetBool("Walk", false);
         }
     }
 }
