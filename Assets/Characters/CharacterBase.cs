@@ -4,14 +4,29 @@ namespace MOBA
 {
     public class CharacterBase : MonoBehaviour
     {
+        [Header("Hotkeys")]
         [SerializeField] protected KeyCode ability1Key = KeyCode.Q;
         [SerializeField] protected KeyCode ability2Key = KeyCode.W;
         [SerializeField] protected KeyCode ability3Key = KeyCode.E;
         [SerializeField] protected KeyCode ability4Key = KeyCode.R;
 
+        [Header("General")]
         [SerializeField] protected AIPathExtended aiPathExtended;
-
         [SerializeField] protected Animator animator;
+        [SerializeField] protected CameraController cameraController;
+
+        [Header("Character Stats")]
+        [SerializeField] private int health = 700;
+        [SerializeField] private int mana = 500;
+        [SerializeField] private int attackDamage = 70;
+        [SerializeField] private int attackSpeed = 20;
+        [SerializeField] private int magicDamage = 70;
+        [SerializeField] private int armor = 20;
+        [SerializeField] private int magicResist = 20;
+        [SerializeField] private int moveSpeed = 50;
+        [SerializeField] private float cooldDownReduction = 0;
+        [SerializeField] private float armorPen = 0;
+        [SerializeField] private float magicPen = 0;
 
         protected virtual void OnEnable()
         {
@@ -79,6 +94,11 @@ namespace MOBA
             print("Stop Moving");
 
             animator.SetBool("Walk", false);
+        }
+
+        protected virtual void Damage()
+        {
+            print("Damaged");
         }
     }
 }
