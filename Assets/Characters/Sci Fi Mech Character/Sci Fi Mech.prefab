@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5006026839075282061
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4822702834634990385}
+  m_Layer: 0
+  m_Name: Ability 1 Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4822702834634990385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5006026839075282061}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.004, y: -0, z: 0.7135}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2478385694688258192}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4089666459155723978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57,6 +88,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aa064f913a1559489aff40eae9b80c1, type: 3}
+--- !u!4 &2478385694688258192 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1920107196860063322, guid: 0aa064f913a1559489aff40eae9b80c1, type: 3}
+  m_PrefabInstance: {fileID: 4089666459155723978}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &6933660260498855150 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6410916672811082276, guid: 0aa064f913a1559489aff40eae9b80c1, type: 3}
@@ -71,7 +107,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7049124902796302056, guid: 635c669ae7b119d469e5f0eeb9a1e174, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Sci Fi Mech
       objectReference: {fileID: 0}
     - target: {fileID: 7049124902796302063, guid: 635c669ae7b119d469e5f0eeb9a1e174, type: 3}
       propertyPath: m_RootOrder
@@ -119,6 +155,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 635c669ae7b119d469e5f0eeb9a1e174, type: 3}
+--- !u!114 &2195489621178729533 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5144551236036927546, guid: 635c669ae7b119d469e5f0eeb9a1e174, type: 3}
+  m_PrefabInstance: {fileID: 6418452153793078279}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1390ecf88fa564d9fd88b693ff359c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6419731099171242466 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1578150786770405, guid: 635c669ae7b119d469e5f0eeb9a1e174, type: 3}
@@ -153,6 +200,27 @@ MonoBehaviour:
   ability4Key: 114
   aiPathExtended: {fileID: 6419731099171242466}
   animator: {fileID: 6933660260498855150}
+  cameraController: {fileID: 2195489621178729533}
+  playerController: {fileID: 8180128519764425190}
+  health: 700
+  mana: 500
+  attackDamage: 70
+  attackSpeed: 20
+  magicDamage: 70
+  moveSpeed: 50
+  ability1ProjectilePrefab: {fileID: 496204451161069212, guid: 9d3877c2142ff4a4b9c9862ad494bd86, type: 3}
+  ability1ProjectileSpawnPoint: {fileID: 4822702834634990385}
+--- !u!114 &8180128519764425190 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2924889729519640033, guid: 635c669ae7b119d469e5f0eeb9a1e174, type: 3}
+  m_PrefabInstance: {fileID: 6418452153793078279}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180128519764425184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c838d4d78f5fee5439b7444e813c621d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8180128519764425191 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2924889729519640032, guid: 635c669ae7b119d469e5f0eeb9a1e174, type: 3}

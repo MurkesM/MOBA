@@ -5,34 +5,25 @@ namespace MOBA
     public class SciFiMech : CharacterBase
     {
         [Header("Sci Fi Mech Fields")]
-        [SerializeField] private bool ability1Active = false;
-        [SerializeField] private float ability1ActiveTime = 3;
-        [SerializeField] private float ability1StartTime = 0;
-        [SerializeField] private float ability1RotateSpeed = 1000;
-
-        protected override void Update()
-        {
-            base.Update();
-
-            if (ability1Active)
-                Ability1Active();
-        }
+        [SerializeField] GameObject ability1ProjectilePrefab;
+        [SerializeField] Transform ability1ProjectileSpawnPoint;
 
         protected override void Passive() { }
 
         protected override void Ability1()
         {
-            ability1Active = true;
-            ability1StartTime = Time.time;
-            //animator.Play(test, -1);
-
             ///mech shoots a skillshot missile in a direction
             ///skillshot/aim based
-            ///play shooting anim
+            ///spawn projectile primitive object
+            ///shoot in direction of mouse
+            ///play shooting anim (animator.Play(test, -1);)
             ///drain mana
             ///go on cooldown
             ///can hit all enemies in path, including minions
             ///does major damage
+
+            GameObject projectile = Instantiate(ability1ProjectilePrefab, ability1ProjectileSpawnPoint.position, ability1ProjectileSpawnPoint.rotation);
+            projectile.GetComponent<ProjectileBase>().Damage = attackDamage;
         }
 
         protected override void Ability2()
@@ -56,14 +47,6 @@ namespace MOBA
             ///go on cooldown
         }
 
-        protected override void Ability4()
-        {
-            
-        }
-
-        private void Ability1Active()
-        {
-
-        }
+        protected override void Ability4() { }
     }
 }
