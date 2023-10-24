@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MOBA
 {
-    public class CharacterBase : MonoBehaviour
+    public class CharacterBase : MonoBehaviour, IDamageable
     {
         [Header("Hotkeys")]
         [SerializeField] protected KeyCode ability1Key = KeyCode.Q;
@@ -14,19 +14,15 @@ namespace MOBA
         [SerializeField] protected AIPathExtended aiPathExtended;
         [SerializeField] protected Animator animator;
         [SerializeField] protected CameraController cameraController;
+        [SerializeField] protected PlayerController playerController;
 
         [Header("Character Stats")]
-        [SerializeField] private int health = 700;
-        [SerializeField] private int mana = 500;
-        [SerializeField] private int attackDamage = 70;
-        [SerializeField] private int attackSpeed = 20;
-        [SerializeField] private int magicDamage = 70;
-        [SerializeField] private int armor = 20;
-        [SerializeField] private int magicResist = 20;
-        [SerializeField] private int moveSpeed = 50;
-        [SerializeField] private float cooldDownReduction = 0;
-        [SerializeField] private float armorPen = 0;
-        [SerializeField] private float magicPen = 0;
+        [SerializeField] protected int health = 700;
+        [SerializeField] protected int mana = 500;
+        [SerializeField] protected int attackDamage = 70;
+        [SerializeField] protected int attackSpeed = 20;
+        [SerializeField] protected int magicDamage = 70;
+        [SerializeField] protected int moveSpeed = 50;
 
         protected virtual void OnEnable()
         {
@@ -96,9 +92,9 @@ namespace MOBA
             animator.SetBool("Walk", false);
         }
 
-        protected virtual void Damage()
+        public virtual void Damage(int damage)
         {
-            print("Damaged");
+            print($"Damaged. Damage Amount {damage}");
         }
     }
 }
