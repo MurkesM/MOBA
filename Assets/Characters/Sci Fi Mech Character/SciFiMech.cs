@@ -7,6 +7,9 @@ namespace MOBA
         [Header("Sci Fi Mech Fields")]
         [SerializeField] GameObject ability1ProjectilePrefab;
         [SerializeField] Transform ability1ProjectileSpawnPoint;
+        [SerializeField] int ability1ManaCost = 60;
+        [SerializeField] float ability1Cooldown = 2;
+        private float timeOfAbility1Used;
 
         protected override void Passive() { }
 
@@ -22,8 +25,15 @@ namespace MOBA
             ///can hit all enemies in path, including minions
             ///does major damage
 
+            if (mana < ability1ManaCost || Time.time < timeOfAbility1Used + ability1Cooldown)
+                return;
+
             GameObject projectile = Instantiate(ability1ProjectilePrefab, ability1ProjectileSpawnPoint.position, ability1ProjectileSpawnPoint.rotation);
             projectile.GetComponent<ProjectileBase>().Damage = attackDamage;
+
+            mana -= ability1ManaCost;
+
+            timeOfAbility1Used = Time.time;
         }
 
         protected override void Ability2()
