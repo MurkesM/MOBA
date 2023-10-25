@@ -4,8 +4,11 @@ namespace MOBA
 {
     public class CameraController : MonoBehaviour
     {
-        [SerializeField] private PlayerController playerController;
-        [SerializeField] private Camera playerCamera;
+        [SerializeField] private PlayerInput playerController;
+
+        public static Camera PlayerCamera { get => playerCamera; }
+        [SerializeField]  private static Camera playerCamera;
+
         [SerializeField] private float cameraMoveSpeed = 1;
 
         [Tooltip("The x offset applied to the cameras position whenever its snapped to the user.")]
@@ -27,6 +30,11 @@ namespace MOBA
         private Vector3 horizontalPoint = new();
         private Vector3 mousePosition = new();
         private float deltaTime;
+
+        private void Awake()
+        {
+            playerCamera = Camera.main;
+        }
 
         private void Update()
         {
