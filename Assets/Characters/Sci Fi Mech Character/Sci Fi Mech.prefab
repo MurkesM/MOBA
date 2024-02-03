@@ -105,6 +105,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2924889729519640033, guid: 635c669ae7b119d469e5f0eeb9a1e174, type: 3}
+      propertyPath: character
+      value: 
+      objectReference: {fileID: 7049124901791163670}
     - target: {fileID: 7049124902796302056, guid: 635c669ae7b119d469e5f0eeb9a1e174, type: 3}
       propertyPath: m_Name
       value: Sci Fi Mech
@@ -194,10 +198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d152b32e37b0bf74381141e6c3a43421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability1Key: 113
-  ability2Key: 119
-  ability3Key: 101
-  ability4Key: 114
   aiPathExtended: {fileID: 6419731099171242466}
   animator: {fileID: 6933660260498855150}
   cameraController: {fileID: 2195489621178729533}
@@ -210,6 +210,8 @@ MonoBehaviour:
   moveSpeed: 50
   ability1ProjectilePrefab: {fileID: 496204451161069212, guid: 9d3877c2142ff4a4b9c9862ad494bd86, type: 3}
   ability1ProjectileSpawnPoint: {fileID: 4822702834634990385}
+  ability1ManaCost: 60
+  ability1Cooldown: 2
 --- !u!114 &8180128519764425190 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2924889729519640033, guid: 635c669ae7b119d469e5f0eeb9a1e174, type: 3}

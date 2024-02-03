@@ -5,9 +5,7 @@ namespace MOBA
     public class ProjectileBase : MonoBehaviour
     {
         public float moveSpeed = 1;
-
-        public int Damage { get => damage; set => damage = value; }
-        private int damage = 0;
+        public int damage = 0;
 
         private void Update()
         {

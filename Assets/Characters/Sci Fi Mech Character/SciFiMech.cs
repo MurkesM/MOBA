@@ -9,11 +9,11 @@ namespace MOBA
         [SerializeField] Transform ability1ProjectileSpawnPoint;
         [SerializeField] int ability1ManaCost = 60;
         [SerializeField] float ability1Cooldown = 2;
-        private float timeOfAbility1Used;
+        private float timeOfAbility1Used = 0;
 
-        protected override void Passive() { }
+        public override void Passive() { }
 
-        protected override void Ability1()
+        public override void Ability1()
         {
             ///mech shoots a skillshot missile in a direction
             ///skillshot/aim based
@@ -28,15 +28,21 @@ namespace MOBA
             if (mana < ability1ManaCost || Time.time < timeOfAbility1Used + ability1Cooldown)
                 return;
 
-            GameObject projectile = Instantiate(ability1ProjectilePrefab, ability1ProjectileSpawnPoint.position, ability1ProjectileSpawnPoint.rotation);
-            projectile.GetComponent<ProjectileBase>().Damage = attackDamage;
+            //stop the character at current location
+            playerController.pathfindingTarget.position = transform.position;
+
+            //transform.forward = Vector3.RotateTowards(transform.forward, Utilities.GetMousePosition(CameraController.PlayerCamera, true, transform.position.z), 
+            //    aiPathExtended.rotationSpeed, 0);
+
+            ProjectileCreator.CreateProjectile(ability1ProjectilePrefab, attackDamage,
+                ability1ProjectileSpawnPoint.position, ability1ProjectileSpawnPoint.rotation);
 
             mana -= ability1ManaCost;
 
             timeOfAbility1Used = Time.time;
         }
 
-        protected override void Ability2()
+        public override void Ability2()
         {
             ///start flamethrower
             ///shreds armor
@@ -47,7 +53,7 @@ namespace MOBA
             ///goes on cooldown
         }
 
-        protected override void Ability3()
+        public override void Ability3()
         {
             ///dash forward
             ///use fly anaimation
@@ -57,6 +63,6 @@ namespace MOBA
             ///go on cooldown
         }
 
-        protected override void Ability4() { }
+        public override void Ability4() { }
     }
 }
